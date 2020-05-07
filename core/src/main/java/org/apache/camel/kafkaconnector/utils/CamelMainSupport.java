@@ -93,17 +93,17 @@ public class CamelMainSupport {
                 if (marshal != null && unmarshal != null) {
                     throw new UnsupportedOperationException("Uses of both marshal (i.e. " + marshal + ") and unmarshal (i.e. " + unmarshal + ") is not supported");
                 } else if (marshal != null) {
-                    log.info("Creating Camel route from({}).marshal().custom({}).to({})", fromUrl, marshal, toUrl);
+                    log.info("Creating dynamic Camel route from({}).marshal().custom({}).to({})", fromUrl, marshal, toUrl);
                     camel.getRegistry().bind(marshal, lookupAndInstantiateDataformat(marshal));
                     rd.marshal().custom(marshal);
                 } else if (unmarshal != null) {
-                    log.info("Creating Camel route from({}).unmarshal().custom({}).to({})", fromUrl, unmarshal, toUrl);
+                    log.info("Creating dynamic Camel route from({}).unmarshal().custom({}).to({})", fromUrl, unmarshal, toUrl);
                     camel.getRegistry().bind(unmarshal, lookupAndInstantiateDataformat(unmarshal));
                     rd.unmarshal().custom(unmarshal);
                 } else {
-                    log.info("Creating Camel route from({}).to({})", fromUrl, toUrl);
+                    log.info("Creating dynamic Camel route from({}).to({})", fromUrl, toUrl);
                 }
-                rd.to(toUrl);
+                rd.toD(toUrl);
             }
         });
     }
