@@ -12,7 +12,8 @@ name: connector-0.1.0 docker build
 on:
   push:
     branches:
-      - camel-kafka-connector-0.1.0-branch
+      - master
+      #- camel-kafka-connector-0.1.0-branch ##Uncomment to enable
     paths-ignore:
       - 'docs/**'
 
